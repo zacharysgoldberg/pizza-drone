@@ -14,7 +14,7 @@ Pizza Drone simulator that uses user geolocation data input to display optimal p
 Calculating the optimal path required a custom variation of the [Held–Karp algorithm](https://en.wikipedia.org/wiki/Held%E2%80%93Karp_algorithm) to solve the Traveling Salesman Problem.
 
 
-```
+```python
 # [Helper function to calculate path distance]
 def tsp_path_helper(path, dist):
     return sum(dist[i][j] for i, j in zip(path, path[1:]))
