@@ -37,7 +37,7 @@ def tsp_path(coords):
             for node in to_visit - visited:
                 new_path = path + [node]
                 new_pos = (node, frozenset(new_path))
-                # Update if (current node, visited) is not in next state or we found shorter path
+                # Update if (current node, visited) is not in next state or we find shorter path
                 if new_pos not in next_state \
                         or tsp_path_helper(new_path, dist_matrix) < tsp_path_helper(next_state[new_pos], dist_matrix):
                     next_state[new_pos] = new_path
