@@ -6,7 +6,7 @@ Pizza Drone simulator that uses user geolocation data input to display optimal p
 
 ## Features
 
-* Implemented OpenStreetMap API
+* Implemented OpenStreetMap CDN
 * Path finding animation
 
 ## Algorithmic challenge
