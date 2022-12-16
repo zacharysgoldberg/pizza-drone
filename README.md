@@ -22,9 +22,9 @@ def tsp_path_helper(path, dist):
 # [Finding optimal path for drone]
 def tsp_path(coords):
     dist_matrix = distance_matrix(coords)
-    # Set of all nodes to visit
+    # [Set of all nodes to visit]
     to_visit = set(list(range(len(dist_matrix))))
-    # Current state {(node, visited_nodes): shortest_path}
+    # [Current state {(node, visited_nodes): shortest_path}]
     state = {(i, frozenset([0, i])): [0, i]
              for i in list(range(1, len(dist_matrix[0])))}
     # print(state, '\n')
@@ -33,17 +33,17 @@ def tsp_path(coords):
         for position, path in state.items():
             # print(position, path)
             current_node, visited = position
-            # Check all nodes that haven't been visited so far
+            # [Check all nodes that haven't been visited so far]
             for node in to_visit - visited:
                 new_path = path + [node]
                 new_pos = (node, frozenset(new_path))
-                # Update if (current node, visited) is not in next state or we have found shorter path
+                # [Update if (current node, visited) is not in next state or we have found shorter path]
                 if new_pos not in next_state \
                         or tsp_path_helper(new_path, dist_matrix) < tsp_path_helper(next_state[new_pos], dist_matrix):
                     next_state[new_pos] = new_path
 
         state = next_state
-    # Find the shortest path and return to starting point
+    # [Find the shortest path and return to starting point]
     shortest_path = min((path + [0] for path in state.values()))
     dist = tsp_path_helper(shortest_path, dist_matrix)
     return shortest_path, dist
